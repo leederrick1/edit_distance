@@ -40,7 +40,13 @@ def edit_distance(word1, word2):
     cols = len(word2) +1
     matrix = [[0 for i in range(cols)] for j in range(rows)]
     trace = get_back(word1,word2)
-    
+    for i in range(rows):
+        for j in range(cols):
+            if i == 0:
+                matrix[i][j] = j
+            elif j == 0:
+                matrix[i][j] = i
+
     for i in range(1,rows):
         for j in range(1,cols):
             left = matrix[i][j-1] + 1 
@@ -80,8 +86,7 @@ def edit_distance(word1, word2):
         print("\n")
     print("The edit distance is: ", matrix[rows-1][cols-1])
     #used for print the global alignment
-    for i in trace:
-        print(i)
+    print("Alignment is ") 
     word1, word2 = getAlignedSequences(word1, word2, matrix, trace)
     word1 = word1[::-1]
     word2 = word2[::-1]
