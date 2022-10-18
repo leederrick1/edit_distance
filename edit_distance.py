@@ -1,3 +1,4 @@
+#creates a second matrix for tracing the alignment
 def get_back(rows, cols):
     matrix = []
     for i in range(len(rows)+1):
@@ -11,8 +12,8 @@ def get_back(rows, cols):
         matrix[i][0] = "u"
     matrix[0][0] = "finish"
     return matrix
-
-def getAlignedSequences(x, y, matrix, traceBack):
+#builds up the alignment by starting at the edit distance and working its way back to 0,0
+def getalignedSequences(x, y, matrix, traceBack):
     xSeq = []
     ySeq = []
     i = len(x)
@@ -87,7 +88,7 @@ def edit_distance(word1, word2):
     print("The edit distance is: ", matrix[rows-1][cols-1])
     #used for print the global alignment
     print("Alignment is ") 
-    word1, word2 = getAlignedSequences(word1, word2, matrix, trace)
+    word1, word2 = getalignedSequences(word1, word2, matrix, trace)
     word1 = word1[::-1]
     word2 = word2[::-1]
     print(*word1)

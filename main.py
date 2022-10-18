@@ -1,3 +1,8 @@
+'''
+Derrick Lee
+Required tools to run this program are python
+To run simply type: python3 main.py
+'''
 from edit_distance import edit_distance
 def main():
    print("Welcome to Edit Distance Demonstration.*")
